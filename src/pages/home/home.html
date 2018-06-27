@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      To-Do List
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="add">
+    <input [(ngModel)] = "tempTask.name" placeholder="name"/>
+      <ul class="status">
+        <li *ngFor = "let status of statuses"
+          (click) = "onSelected(status)">
+          <span >{{status}}</span>
+        </li>
+      </ul>
+    <div (click)="addTask();">ADD</div>
+  </div>
+  <div class="pendingTasks">
+      <h1>Pending To-Dos</h1>
+      <ul>
+        <li *ngFor = "let task1 of pendingTasks">
+          <br/>
+          {{task1.id}}<br/>
+          {{task1.name}}<br/>
+          {{task1.status}}<br/>
+          <div (click)="delete(task1);">DELETE</div><br/>
+          <br/>
+        </li>
+      </ul>
+    </div>
+    <div class="overdueTasks">
+        <h1>Overdue To-Dos</h1>
+        <ul>
+          <li *ngFor = "let task2 of overdueTasks">
+            <br/>
+            {{task2.id}}<br/>
+            {{task2.name}}<br/>
+            {{task2.status}}<br/>
+            <div (click)="delete(task2);">DELETE</div><br/>
+            <br/>
+          </li>
+        </ul>
+      </div>
+  <div class="allTasks">
+    <h1>All To-Dos</h1>
+    <ul>
+      <li *ngFor = "let task of tasks">
+        <br/>
+        {{task.id}}<br/>
+        {{task.name}}<br/>
+        {{task.status}}<br/>
+        <div (click)="delete(task);">DELETE</div><br/>
+        <br/>
+      </li>
+    </ul>
+  </div>
+</ion-content>
